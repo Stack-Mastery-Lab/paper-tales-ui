@@ -4,6 +4,7 @@ import AuthLayout from "./components/Layout/AuthLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { useAuth } from './AuthContext';
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   console.log("🔄 [App] render");
@@ -15,7 +16,7 @@ function App() {
     <Routes>
       {isLoggedIn ? (
         <Route path="/" element={<AuthLayout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Dashboard />} />
         </Route>
       ) : (
         <Route path="/" element={<Layout />}>

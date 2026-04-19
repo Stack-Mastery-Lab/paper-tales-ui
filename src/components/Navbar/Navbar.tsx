@@ -18,7 +18,6 @@ const Navbar = () => {
 
             {/* Enlaces */}
             <ul className={`${isOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row absolute md:static top-full left-0 w-full bg-white md:w-auto shadow-md md:shadow-none p-4 md:p-0 gap-4`}>
-            
                 <li><a href="/libros" className="hover:text-blue-600 transition-colors">{t.nav.books}</a></li>
                 <li><a href="/acerca" className="hover:text-blue-600 transition-colors">{t.nav.about}</a></li>
                 <li><a href="/login" className="hover:text-blue-600 transition-colors">{t.nav.login}</a></li>
