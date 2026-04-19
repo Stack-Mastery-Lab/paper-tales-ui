@@ -1,0 +1,18 @@
+{
+  "common": {
+    "close": "Cerrar"
+  },
+  "nav": {
+    "login": "Acceder",
+    "books": "Libros",
+    "about": "Nosotros"
+  },
+  "test": {
+    "title": "Libro",
+    "validationStatus": {
+      "valid": "Válido",
+      "invalid": "Inválido",
+      "duplicate": "Duplicado"
+    }
+  }
+}
