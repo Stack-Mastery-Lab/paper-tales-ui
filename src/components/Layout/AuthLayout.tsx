@@ -5,7 +5,7 @@ export default function AuthLayout() {
     console.log("🔐 [AuthLayout] render");
 
     return (
-        <div className="flex flex-col min-h-screen bg-green-50">
+        <div className="flex flex-col min-h-screen bg-papel">
             <AuthNavbar />
             <main className="flex">
                 <Outlet />

@@ -14,7 +14,7 @@ export const AuthNavbar = () => {
   return (
     <>
     <div className="flex flex-row justify-between items-center p-4 bg-gray-800 text-white">
-      <span >Paper Tales</span>
+      <span >Relatos de Papel</span>
       <div className="flex flex-row gap-4">
         <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={handleLogin}>
           Cerrar Sesión

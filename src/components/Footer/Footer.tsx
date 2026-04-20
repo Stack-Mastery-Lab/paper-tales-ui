@@ -4,7 +4,7 @@ const Footer = () => {
             <div className="container mx-auto text-center px-4">
                 {/* Texto de Copyright */}
                 <p className="text-sm">
-                    © {new Date().getFullYear()} MiBiblioteca. Todos los derechos reservados.
+                    © {new Date().getFullYear()} Relatos de Papel. Todos los derechos reservados.
                 </p>
 
                 {/* Enlaces secundarios */}

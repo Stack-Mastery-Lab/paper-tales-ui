@@ -1,4 +1,3 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContext'
 
@@ -13,7 +12,7 @@ const Login = () => {
   }
 
   return (
-    <div className="bg-amber-50 h-screen w-screen flex items-center justify-center flex-col gap-4">
+    <div className="h-screen w-screen flex items-center justify-center flex-col gap-4">
       <h1>Login</h1>
       <form className="flex flex-col gap-4">
         <input type="text" placeholder="Username" className="border p-2 rounded" />
