@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+  /* Definimos los colores aquí */
+  --color-papel: #F9F7F2;
+  --color-tinta: #2C3E50;
+  --color-acento: #A0522D;
+  --color-exito: #27AE60;
+  --color-alerta: #E67E22;
+}

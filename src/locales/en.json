@@ -1,0 +1,18 @@
+{
+    "common": {
+        "close": "Close"
+    },
+    "nav": {
+        "login": "Sign In",
+        "books": "Books",
+        "about": "About"
+    },
+    "test": {
+        "title": "Book",
+        "validationStatus": {
+            "valid": "Valid",
+            "invalid": "Invalid",
+            "duplicate": "Duplicate"
+        }
+    }
+}

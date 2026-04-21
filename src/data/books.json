@@ -1,0 +1,596 @@
+{
+  "categories": [
+    {
+      "id": "cat_01",
+      "name": "Programación",
+      "slug": "programacion",
+      "description": "Fundamentos y arquitecturas."
+    },
+    {
+      "id": "cat_02",
+      "name": "Ciberseguridad",
+      "slug": "ciberseguridad",
+      "description": "Protección y vulnerabilidades."
+    },
+    {
+      "id": "cat_03",
+      "name": "Ciencia Ficción",
+      "slug": "ciencia-ficcion",
+      "description": "Historias especulativas."
+    },
+    {
+      "id": "cat_04",
+      "name": "Historia",
+      "slug": "historia",
+      "description": "Eventos y civilizaciones."
+    },
+    {
+      "id": "cat_05",
+      "name": "Gestión de Proyectos",
+      "slug": "gestion",
+      "description": "Metodologías y liderazgo."
+    },
+    {
+      "id": "cat_06",
+      "name": "Finanzas",
+      "slug": "finanzas",
+      "description": "Inversión y economía."
+    },
+    {
+      "id": "cat_07",
+      "name": "Ciencia",
+      "slug": "ciencia",
+      "description": "Divulgación y naturaleza."
+    },
+    {
+      "id": "cat_08",
+      "name": "Salud y Bienestar",
+      "slug": "salud",
+      "description": "Nutrición y mente."
+    },
+    {
+      "id": "cat_09",
+      "name": "Filosofía",
+      "slug": "filosofia",
+      "description": "Ética y pensamiento."
+    },
+    {
+      "id": "cat_10",
+      "name": "Arte y Diseño",
+      "slug": "arte",
+      "description": "Creatividad y UI/UX."
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "categoryId": "cat_01",
+      "year": 2008,
+      "format": "fisico",
+      "summary": "Guía esencial para escribir código limpio.",
+      "coverUrl": "https://picsum.photos/seed/1/200/300",
+      "stock": 8
+    },
+    {
+      "id": 2,
+      "title": "The Pragmatic Programmer",
+      "author": "Andrew Hunt",
+      "categoryId": "cat_01",
+      "year": 1999,
+      "format": "digital",
+      "summary": "Principios para ser un mejor desarrollador.",
+      "coverUrl": "https://picsum.photos/seed/2/200/300"
+    },
+    {
+      "id": 3,
+      "title": "Eloquent JavaScript",
+      "author": "Marijn Haverbeke",
+      "categoryId": "cat_01",
+      "year": 2011,
+      "format": "fisico",
+      "summary": "Inmersión profunda en JavaScript moderno.",
+      "coverUrl": "https://picsum.photos/seed/3/200/300",
+      "stock": 2
+    },
+    {
+      "id": 4,
+      "title": "Design Patterns",
+      "author": "Erich Gamma",
+      "categoryId": "cat_01",
+      "year": 1994,
+      "format": "digital",
+      "summary": "Soluciones reutilizables de software.",
+      "coverUrl": "https://picsum.photos/seed/4/200/300"
+    },
+    {
+      "id": 5,
+      "title": "Refactoring",
+      "author": "Martin Fowler",
+      "categoryId": "cat_01",
+      "year": 1999,
+      "format": "fisico",
+      "summary": "Cómo mejorar el código existente.",
+      "coverUrl": "https://picsum.photos/seed/5/200/300",
+      "stock": 7
+    },
+    {
+      "id": 6,
+      "title": "The Art of Invisibility",
+      "author": "Kevin Mitnick",
+      "categoryId": "cat_02",
+      "year": 2017,
+      "format": "digital",
+      "summary": "Privacidad en el mundo digital.",
+      "coverUrl": "https://picsum.photos/seed/6/200/300"
+    },
+    {
+      "id": 7,
+      "title": "Hacking: Art of Exploitation",
+      "author": "Jon Erickson",
+      "categoryId": "cat_02",
+      "year": 2008,
+      "format": "fisico",
+      "summary": "Análisis técnico de explotación.",
+      "coverUrl": "https://picsum.photos/seed/7/200/300",
+      "stock": 9
+    },
+    {
+      "id": 8,
+      "title": "Social Engineering",
+      "author": "Christopher Hadnagy",
+      "categoryId": "cat_02",
+      "year": 2010,
+      "format": "fisico",
+      "summary": "El arte de manipular personas.",
+      "coverUrl": "https://picsum.photos/seed/8/200/300",
+      "stock": 1
+    },
+    {
+      "id": 9,
+      "title": "Ghost in the Wires",
+      "author": "Kevin Mitnick",
+      "categoryId": "cat_02",
+      "year": 2011,
+      "format": "digital",
+      "summary": "Memorias de un hacker.",
+      "coverUrl": "https://picsum.photos/seed/9/200/300"
+    },
+    {
+      "id": 10,
+      "title": "Practical Malware Analysis",
+      "author": "Michael Sikorski",
+      "categoryId": "cat_02",
+      "year": 2012,
+      "format": "fisico",
+      "summary": "Análisis avanzado de malware.",
+      "coverUrl": "https://picsum.photos/seed/10/200/300",
+      "stock": 9
+    },
+    {
+      "id": 11,
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "categoryId": "cat_03",
+      "year": 1965,
+      "format": "fisico",
+      "summary": "Política y ecología en Arrakis.",
+      "coverUrl": "https://picsum.photos/seed/11/200/300",
+      "stock": 8
+    },
+    {
+      "id": 12,
+      "title": "Neuromancer",
+      "author": "William Gibson",
+      "categoryId": "cat_03",
+      "year": 1984,
+      "format": "digital",
+      "summary": "Fundamento del cyberpunk.",
+      "coverUrl": "https://picsum.photos/seed/12/200/300"
+    },
+    {
+      "id": 13,
+      "title": "Snow Crash",
+      "author": "Neal Stephenson",
+      "categoryId": "cat_03",
+      "year": 1992,
+      "format": "fisico",
+      "summary": "Metaverso y hackers.",
+      "coverUrl": "https://picsum.photos/seed/13/200/300",
+      "stock": 4
+    },
+    {
+      "id": 14,
+      "title": "Foundation",
+      "author": "Isaac Asimov",
+      "categoryId": "cat_03",
+      "year": 1951,
+      "format": "digital",
+      "summary": "Imperio galáctico.",
+      "coverUrl": "https://picsum.photos/seed/14/200/300"
+    },
+    {
+      "id": 15,
+      "title": "1984",
+      "author": "George Orwell",
+      "categoryId": "cat_03",
+      "year": 1949,
+      "format": "fisico",
+      "summary": "Estado totalitario.",
+      "coverUrl": "https://picsum.photos/seed/15/200/300",
+      "stock": 9
+    },
+    {
+      "id": 16,
+      "title": "Sapiens",
+      "author": "Yuval Noah Harari",
+      "categoryId": "cat_04",
+      "year": 2011,
+      "format": "fisico",
+      "summary": "Evolución humana.",
+      "coverUrl": "https://picsum.photos/seed/16/200/300",
+      "stock": 1
+    },
+    {
+      "id": 17,
+      "title": "Guns, Germs, and Steel",
+      "author": "Jared Diamond",
+      "categoryId": "cat_04",
+      "year": 1997,
+      "format": "digital",
+      "summary": "Historia de sociedades.",
+      "coverUrl": "https://picsum.photos/seed/17/200/300"
+    },
+    {
+      "id": 18,
+      "title": "SPQR",
+      "author": "Mary Beard",
+      "categoryId": "cat_04",
+      "year": 2015,
+      "format": "fisico",
+      "summary": "Antigua Roma.",
+      "coverUrl": "https://picsum.photos/seed/18/200/300",
+      "stock": 5
+    },
+    {
+      "id": 19,
+      "title": "1491",
+      "author": "Charles C. Mann",
+      "categoryId": "cat_04",
+      "year": 2005,
+      "format": "digital",
+      "summary": "América precolombina.",
+      "coverUrl": "https://picsum.photos/seed/19/200/300"
+    },
+    {
+      "id": 20,
+      "title": "Homage to Catalonia",
+      "author": "George Orwell",
+      "categoryId": "cat_04",
+      "year": 1938,
+      "format": "fisico",
+      "summary": "Guerra Civil Española.",
+      "coverUrl": "https://picsum.photos/seed/20/200/300",
+      "stock": 3
+    },
+    {
+      "id": 21,
+      "title": "PMBOK Guide",
+      "author": "PMI",
+      "categoryId": "cat_05",
+      "year": 2021,
+      "format": "fisico",
+      "summary": "Gestión de proyectos.",
+      "coverUrl": "https://picsum.photos/seed/21/200/300",
+      "stock": 9
+    },
+    {
+      "id": 22,
+      "title": "The Phoenix Project",
+      "author": "Gene Kim",
+      "categoryId": "cat_05",
+      "year": 2013,
+      "format": "digital",
+      "summary": "TI y DevOps.",
+      "coverUrl": "https://picsum.photos/seed/22/200/300"
+    },
+    {
+      "id": 23,
+      "title": "The Lean Startup",
+      "author": "Eric Ries",
+      "categoryId": "cat_05",
+      "year": 2011,
+      "format": "fisico",
+      "summary": "Startups eficientes.",
+      "coverUrl": "https://picsum.photos/seed/23/200/300",
+      "stock": 4
+    },
+    {
+      "id": 24,
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "categoryId": "cat_05",
+      "year": 2018,
+      "format": "digital",
+      "summary": "Hábitos pequeños.",
+      "coverUrl": "https://picsum.photos/seed/24/200/300"
+    },
+    {
+      "id": 25,
+      "title": "Deep Work",
+      "author": "Cal Newport",
+      "categoryId": "cat_05",
+      "year": 2016,
+      "format": "fisico",
+      "summary": "Enfoque profundo.",
+      "coverUrl": "https://picsum.photos/seed/25/200/300",
+      "stock": 7
+    },
+    {
+      "id": 26,
+      "title": "Padre Rico, Padre Pobre",
+      "author": "Robert Kiyosaki",
+      "categoryId": "cat_06",
+      "year": 1997,
+      "format": "fisico",
+      "summary": "Educación financiera.",
+      "coverUrl": "https://picsum.photos/seed/26/200/300",
+      "stock": 2
+    },
+    {
+      "id": 27,
+      "title": "The Intelligent Investor",
+      "author": "Benjamin Graham",
+      "categoryId": "cat_06",
+      "year": 1949,
+      "format": "digital",
+      "summary": "Inversión en valor.",
+      "coverUrl": "https://picsum.photos/seed/27/200/300"
+    },
+    {
+      "id": 28,
+      "title": "Principles",
+      "author": "Ray Dalio",
+      "categoryId": "cat_06",
+      "year": 2017,
+      "format": "fisico",
+      "summary": "Lecciones de trabajo.",
+      "coverUrl": "https://picsum.photos/seed/28/200/300",
+      "stock": 1
+    },
+    {
+      "id": 29,
+      "title": "Freakonomics",
+      "author": "Steven Levitt",
+      "categoryId": "cat_06",
+      "year": 2005,
+      "format": "digital",
+      "summary": "Economía oculta.",
+      "coverUrl": "https://picsum.photos/seed/29/200/300"
+    },
+    {
+      "id": 30,
+      "title": "The Millionaire Next Door",
+      "author": "Thomas Stanley",
+      "categoryId": "cat_06",
+      "year": 1996,
+      "format": "fisico",
+      "summary": "Cómo viven los ricos.",
+      "coverUrl": "https://picsum.photos/seed/30/200/300",
+      "stock": 6
+    },
+    {
+      "id": 31,
+      "title": "Breve historia del tiempo",
+      "author": "Stephen Hawking",
+      "categoryId": "cat_07",
+      "year": 1988,
+      "format": "fisico",
+      "summary": "Cosmología básica.",
+      "coverUrl": "https://picsum.photos/seed/31/200/300",
+      "stock": 2
+    },
+    {
+      "id": 32,
+      "title": "Cosmos",
+      "author": "Carl Sagan",
+      "categoryId": "cat_07",
+      "year": 1980,
+      "format": "digital",
+      "summary": "Espacio y ciencia.",
+      "coverUrl": "https://picsum.photos/seed/32/200/300"
+    },
+    {
+      "id": 33,
+      "title": "The Selfish Gene",
+      "author": "Richard Dawkins",
+      "categoryId": "cat_07",
+      "year": 1976,
+      "format": "fisico",
+      "summary": "Evolución genética.",
+      "coverUrl": "https://picsum.photos/seed/33/200/300",
+      "stock": 1
+    },
+    {
+      "id": 34,
+      "title": "Pale Blue Dot",
+      "author": "Carl Sagan",
+      "categoryId": "cat_07",
+      "year": 1994,
+      "format": "digital",
+      "summary": "Futuro humano.",
+      "coverUrl": "https://picsum.photos/seed/34/200/300"
+    },
+    {
+      "id": 35,
+      "title": "Chaos",
+      "author": "James Gleick",
+      "categoryId": "cat_07",
+      "year": 1987,
+      "format": "fisico",
+      "summary": "Teoría del caos.",
+      "coverUrl": "https://picsum.photos/seed/35/200/300",
+      "stock": 5
+    },
+    {
+      "id": 36,
+      "title": "Why We Sleep",
+      "author": "Matthew Walker",
+      "categoryId": "cat_08",
+      "year": 2017,
+      "format": "fisico",
+      "summary": "Importancia del sueño.",
+      "coverUrl": "https://picsum.photos/seed/36/200/300",
+      "stock": 2
+    },
+    {
+      "id": 37,
+      "title": "Breath",
+      "author": "James Nestor",
+      "categoryId": "cat_08",
+      "year": 2020,
+      "format": "digital",
+      "summary": "Ciencia respiratoria.",
+      "coverUrl": "https://picsum.photos/seed/37/200/300"
+    },
+    {
+      "id": 38,
+      "title": "Lifespan",
+      "author": "David Sinclair",
+      "categoryId": "cat_08",
+      "year": 2019,
+      "format": "fisico",
+      "summary": "Ciencia de envejecer.",
+      "coverUrl": "https://picsum.photos/seed/38/200/300",
+      "stock": 1
+    },
+    {
+      "id": 39,
+      "title": "Antifragile",
+      "author": "Nassim Taleb",
+      "categoryId": "cat_08",
+      "year": 2012,
+      "format": "digital",
+      "summary": "Prosperar en incertidumbre.",
+      "coverUrl": "https://picsum.photos/seed/39/200/300"
+    },
+    {
+      "id": 40,
+      "title": "Gut",
+      "author": "Giulia Enders",
+      "categoryId": "cat_08",
+      "year": 2014,
+      "format": "fisico",
+      "summary": "Sistema digestivo.",
+      "coverUrl": "https://picsum.photos/seed/40/200/300",
+      "stock": 4
+    },
+    {
+      "id": 41,
+      "title": "Meditaciones",
+      "author": "Marco Aurelio",
+      "categoryId": "cat_09",
+      "year": 180,
+      "format": "fisico",
+      "summary": "Estoicismo clásico.",
+      "coverUrl": "https://picsum.photos/seed/41/200/300",
+      "stock": 9
+    },
+    {
+      "id": 42,
+      "title": "Beyond Good and Evil",
+      "author": "Friedrich Nietzsche",
+      "categoryId": "cat_09",
+      "year": 1886,
+      "format": "digital",
+      "summary": "Moralidad tradicional.",
+      "coverUrl": "https://picsum.photos/seed/42/200/300"
+    },
+    {
+      "id": 43,
+      "title": "The Republic",
+      "author": "Plato",
+      "categoryId": "cat_09",
+      "year": 375,
+      "format": "fisico",
+      "summary": "Justicia y Estado.",
+      "coverUrl": "https://picsum.photos/seed/43/200/300",
+      "stock": 8
+    },
+    {
+      "id": 44,
+      "title": "Letters from a Stoic",
+      "author": "Seneca",
+      "categoryId": "cat_09",
+      "year": 65,
+      "format": "digital",
+      "summary": "Consejos éticos.",
+      "coverUrl": "https://picsum.photos/seed/44/200/300"
+    },
+    {
+      "id": 45,
+      "title": "The Myth of Sisyphus",
+      "author": "Albert Camus",
+      "categoryId": "cat_09",
+      "year": 1942,
+      "format": "fisico",
+      "summary": "El absurdo.",
+      "coverUrl": "https://picsum.photos/seed/45/200/300",
+      "stock": 7
+    },
+    {
+      "id": 46,
+      "title": "Don't Make Me Think",
+      "author": "Steve Krug",
+      "categoryId": "cat_10",
+      "year": 2000,
+      "format": "fisico",
+      "summary": "Usabilidad web.",
+      "coverUrl": "https://picsum.photos/seed/46/200/300",
+      "stock": 2
+    },
+    {
+      "id": 47,
+      "title": "The Design of Everyday Things",
+      "author": "Don Norman",
+      "categoryId": "cat_10",
+      "year": 1988,
+      "format": "digital",
+      "summary": "Diseño de objetos.",
+      "coverUrl": "https://picsum.photos/seed/47/200/300"
+    },
+    {
+      "id": 48,
+      "title": "Steal Like an Artist",
+      "author": "Austin Kleon",
+      "categoryId": "cat_10",
+      "year": 2012,
+      "format": "fisico",
+      "summary": "Creatividad.",
+      "coverUrl": "https://picsum.photos/seed/48/200/300",
+      "stock": 5
+    },
+    {
+      "id": 49,
+      "title": "Thinking with Type",
+      "author": "Ellen Lupton",
+      "categoryId": "cat_10",
+      "year": 2004,
+      "format": "digital",
+      "summary": "Tipografía.",
+      "coverUrl": "https://picsum.photos/seed/49/200/300"
+    },
+    {
+      "id": 50,
+      "title": "Refactoring UI",
+      "author": "Adam Wathan",
+      "categoryId": "cat_10",
+      "year": 2018,
+      "format": "fisico",
+      "summary": "Diseño para devs.",
+      "coverUrl": "https://picsum.photos/seed/50/200/300",
+      "stock": 5
+    }
+  ]
+}

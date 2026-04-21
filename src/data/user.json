@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "username": "john",
+    "password": "password2026",
+    "name": "John",
+    "role": "admin",
+    "photo": "https://ui-avatars.com/api/?name=John&background=0D8ABC&color=fff"
+  },
+  {
+    "id": 2,
+    "username": "carito",
+    "password": "password2026",
+    "name": "Carito",
+    "role": "editor",
+    "photo": "https://ui-avatars.com/api/?name=Carito&background=E91E63&color=fff"
+  },
+  {
+    "id": 3,
+    "username": "erika",
+    "password": "password2026",
+    "name": "Erika",
+    "role": "user",
+    "photo": "https://ui-avatars.com/api/?name=Erika&background=9C27B0&color=fff"
+  },
+  {
+    "id": 4,
+    "username": "sebastian",
+    "password": "password2026",
+    "name": "Juan Sebastian",
+    "role": "user",
+    "photo": "https://ui-avatars.com/api/?name=Sebastian&background=4CAF50&color=fff"
+  },
+  {
+    "id": 5,
+    "username": "aura",
+    "password": "password2026",
+    "name": "Aura",
+    "role": "user",
+    "photo": "https://ui-avatars.com/api/?name=Aura&background=FF9800&color=fff"
+  }
+]
