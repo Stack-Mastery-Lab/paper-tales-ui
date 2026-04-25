@@ -1,6 +1,7 @@
 {
   "common": {
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "loading": "Cargando ..."
   },
   "nav": {
     "login": "Acceder",
