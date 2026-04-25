@@ -3,8 +3,9 @@ import Layout from "./components/Layout/Layout";
 import AuthLayout from "./components/Layout/AuthLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import { useAuth } from './AuthContext';
+import { useAuth } from './context/AuthContext';
 import Dashboard from "./pages/Dashboard";
+import { Books } from "./pages/Books";
 
 function App() {
   console.log("🔄 [App] render");
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
+          <Route path="books" element={<Books />} />
         </Route>
       )}
     </Routes>

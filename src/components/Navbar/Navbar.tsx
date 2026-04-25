@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 
 const Navbar = () => {
-    console.log("📐 [Navbar] render");
     const [isOpen, setIsOpen] = useState(false);
     const { t, setLanguage, language } = useLanguage();
 

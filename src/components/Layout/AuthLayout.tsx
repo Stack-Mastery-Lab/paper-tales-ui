@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { AuthNavbar } from "../Navbar/AuthNavbar";
+import { AuthNavbar } from "../Header/AuthHeader";
 
 export default function AuthLayout() {
     console.log("🔐 [AuthLayout] render");
