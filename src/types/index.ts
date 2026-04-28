@@ -14,6 +14,7 @@ export interface Book {
   author: string;
   categoryId: string;
   year: number;
+  price: number;
   format: BookFormat;
   summary: string;
   coverUrl: string;
