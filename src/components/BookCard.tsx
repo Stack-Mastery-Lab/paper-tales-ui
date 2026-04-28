@@ -1,13 +1,19 @@
-import React from 'react';
-import {  useNavigate } from 'react-router-dom';
+import React, { type JSX } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import type { Book } from '../types';
 import { useAuth } from '../context/AuthContext';
-import { ShoppingCart } from 'lucide-react';
+import { Monitor, ShoppingCart, Book as BooksLuci  } from 'lucide-react';
+
 
 interface BookCardProps {
     book: Book;
 }
+
+const formatIcons: Record<string, JSX.Element> = {
+  FISICO: <BooksLuci className="w-4 h-4" />,
+  DIGITAL: <Monitor className="w-4 h-4" />,
+};
 
 export const BookCard: React.FC<BookCardProps> = ({ book }) => {
 
@@ -34,6 +40,11 @@ export const BookCard: React.FC<BookCardProps> = ({ book }) => {
                 <h3 className="text-xl font-bold text-gray-800">{book.title}</h3>
                 <p className="text-sm text-indigo-600 font-medium mb-2">{book.author}</p>
                 <p className="text-gray-600 text-sm line-clamp-3">{book.summary}</p>
+                <div className="mt-4 flex items-center justify-between">
+                     {formatIcons[book.format.toUpperCase()]}
+                    <p className="text-lg font-bold text-indigo-600">${book.price.toFixed(2)}</p>
+                </div>
+
             </div>
 
             <div className="p-5 pt-0">
@@ -41,10 +52,10 @@ export const BookCard: React.FC<BookCardProps> = ({ book }) => {
                     onClick={handleAddToCart}
                     className="w-full flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition font-semibold"
                 >
-                    <ShoppingCart size={20} /> 
+                    <ShoppingCart size={20} />
                     <span>Añadir al carrito</span>
                 </button>
-                
+
             </div>
         </div>
     );
