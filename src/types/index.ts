@@ -19,6 +19,7 @@ export interface Book {
   summary: string;
   coverUrl: string;
   stock?: number; // El '?' hace que sea opcional
+  quantity?: number; // cantidad en el carrito
 }
 
 

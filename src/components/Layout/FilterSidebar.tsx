@@ -22,7 +22,7 @@ export const FilterSidebar = ({ selectedFormat, setSelectedFormat, isOpen, onTog
    if (!isOpen) return null; 
 
   return (
-    <aside className="w-64 bg-paper border-r border-gray-200 p-6 hidden md:block shadow-2xl">
+    <aside className="w-full md:w-64 h-screen bg-paper border-r border-gray-200 p-4 md:p-6 flex flex-col overflow-y-auto shadow-2xl">
       <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
         Filtrar por Formato
       </h2>
@@ -44,11 +44,11 @@ export const FilterSidebar = ({ selectedFormat, setSelectedFormat, isOpen, onTog
         ))}
       </div>
 
-      <div className="mt-8">
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+      <div className="mt-8 flex-1 flex flex-col min-h-0">
+        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4 shrink-0">
           Categorías
         </h2>
-        <div className="space-y-2">
+        <div className="space-y-2 overflow-y-auto pr-2">
           {categories.map((category) => (
             <button
               key={category.id}

@@ -3,29 +3,31 @@ import { useNavigate } from 'react-router-dom';
 
 import type { Book } from '../types';
 import { useAuth } from '../context/AuthContext';
-import { Monitor, ShoppingCart, Book as BooksLuci  } from 'lucide-react';
+import { Monitor, ShoppingCart, Book as BooksLuci, CheckCircle } from 'lucide-react';
 
 
 interface BookCardProps {
     book: Book;
+    onAddToCart?: (book: Book) => void;
 }
 
 const formatIcons: Record<string, JSX.Element> = {
-  FISICO: <BooksLuci className="w-4 h-4" />,
-  DIGITAL: <Monitor className="w-4 h-4" />,
+    FISICO: <BooksLuci className="w-4 h-4" />,
+    DIGITAL: <Monitor className="w-4 h-4" />,
 };
 
-export const BookCard: React.FC<BookCardProps> = ({ book }) => {
+export const BookCard: React.FC<BookCardProps> = ({ book, onAddToCart }) => {
 
     const { isLoggedIn } = useAuth();
     const navigate = useNavigate();
+    const isDigital = book.format.toUpperCase() === 'DIGITAL';
 
     const handleAddToCart = () => {
         if (!isLoggedIn) {
             navigate('/login');
         } else {
             console.log(`Libro ${book.title} añadido al carrito`);
-            alert("¡Libro añadido al carrito!");
+            onAddToCart?.(book);
         }
     };
 
@@ -41,7 +43,18 @@ export const BookCard: React.FC<BookCardProps> = ({ book }) => {
                 <p className="text-sm text-indigo-600 font-medium mb-2">{book.author}</p>
                 <p className="text-gray-600 text-sm line-clamp-3">{book.summary}</p>
                 <div className="mt-4 flex items-center justify-between">
-                     {formatIcons[book.format.toUpperCase()]}
+                    <div className="flex items-start justify-baseline gap-2">
+                    {formatIcons[book.format.toUpperCase()]}
+                    {isDigital ? (
+                        <span className="flex items-center gap-1 text-sm font-medium text-green-600">
+                            <CheckCircle size={14} /> Inmediato
+                        </span>
+                    ) : (
+                        <span className="text-sm text-gray-500">
+                            {book.stock && book.stock > 0 ? `${book.stock} stock` : 'Agotado'}
+                        </span>
+                    )}
+                    </div>
                     <p className="text-lg font-bold text-indigo-600">${book.price.toFixed(2)}</p>
                 </div>
 
@@ -50,6 +63,7 @@ export const BookCard: React.FC<BookCardProps> = ({ book }) => {
             <div className="p-5 pt-0">
                 <button
                     onClick={handleAddToCart}
+                    disabled={!isDigital && (book.stock ?? 0) === 0}
                     className="w-full flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition font-semibold"
                 >
                     <ShoppingCart size={20} />
