@@ -4,7 +4,6 @@ import es from '../locales/es.json';
 
 type Language = 'es' | 'en';
 
-// 1. Extraemos el tipo de uno de los archivos JSON para tener autocompletado pro
 type TranslationKeys = typeof en;
 
 const translations = { en, es };
