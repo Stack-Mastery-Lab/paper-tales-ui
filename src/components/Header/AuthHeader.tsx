@@ -34,7 +34,7 @@ export const AuthHeader = ({ onToggleMenu, cartCount = 0, onCartClick }: AuthHea
       </div>
       <div className="flex items-center gap-6">
         {user && (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3" onClick={() => navigate('/profile')}>
             <img
               src={user.photo}
               alt={user.name}
