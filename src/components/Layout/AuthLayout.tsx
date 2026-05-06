@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { AuthHeader } from "../Header/AuthHeader";
 import { FilterSidebar } from "./FilterSidebar";
 import { useState } from "react";
@@ -59,6 +59,9 @@ export default function AuthLayout() {
         );
     };
 
+    const location = useLocation();
+    const showSidebar = location.pathname !== '/profile';
+
     return (
         <div className="flex flex-col min-h-screen bg-papel">
             <AuthHeader onToggleMenu={toggleSidebar}
@@ -66,12 +69,14 @@ export default function AuthLayout() {
                 onCartClick={() => setIsCartOpen(true)}
             />
             <main className="flex flex-1">
+                {showSidebar && (
                 <FilterSidebar
                     selectedFormat={formatFilter}
                     setSelectedFormat={setFormatFilter}
                     isOpen={isSidebarOpen}
                     onToggleCategory={handleToggleCategory}
                 />
+                )}
                 <Outlet context={{ selectedFormat: formatFilter,
                      selectedCategories,
                      onAddToCart: handleAddToCart
