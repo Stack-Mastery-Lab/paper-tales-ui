@@ -7,8 +7,8 @@ import { CartDrawer } from "../CartDrawer";
 
 export default function AuthLayout() {
     console.log("🔐 [AuthLayout] render");
-    const location = useLocation();
-    const isBookDetail = location.pathname.includes("/bookdetail/");
+    const userLocation = useLocation();
+    const isBookDetail = userLocation.pathname.includes("/bookdetail/");
     const [formatFilter, setFormatFilter] = useState("TODOS");
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -63,8 +63,8 @@ export default function AuthLayout() {
 
     const clearCart = () => setCartBooks([]);
 
-    const location = useLocation();
-    const showSidebar = location.pathname !== '/profile';
+    const userLocation2 = useLocation();
+    const showSidebar = userLocation2.pathname !== '/profile';
 
     return (
         <div className="flex flex-col min-h-screen bg-papel">
@@ -73,23 +73,26 @@ export default function AuthLayout() {
                 onCartClick={() => setIsCartOpen(true)}
             />
             <main className="flex flex-1">
-                {!isBookDetail && 
-                {showSidebar && (
-                <FilterSidebar
-                    selectedFormat={formatFilter}
-                    setSelectedFormat={setFormatFilter}
-                    isOpen={isSidebarOpen}
-                    onToggleCategory={handleToggleCategory}
-                />}
-                />
+                {!isBookDetail && showSidebar && (
+                    <FilterSidebar
+                        selectedFormat={formatFilter}
+                        setSelectedFormat={setFormatFilter}
+                        isOpen={isSidebarOpen}
+                        onToggleCategory={handleToggleCategory}
+                    />
                 )}
-                <Outlet context={{ selectedFormat: formatFilter,
-                     selectedCategories,
-                     onAddToCart: handleAddToCart,
-                     cartBooks,
-                     clearCart,
-                     }} />
+
+                <Outlet
+                    context={{
+                        selectedFormat: formatFilter,
+                        selectedCategories,
+                        onAddToCart: handleAddToCart,
+                        cartBooks,
+                        clearCart,
+                    }}
+                />
             </main>
+
 
             <CartDrawer
                 isOpen={isCartOpen}
