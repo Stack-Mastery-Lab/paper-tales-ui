@@ -14,11 +14,11 @@ export const BookDetailContent = ({ book, category }: BookDetailContentProps) =>
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
   const returnToDashboard = () => {
-      if (!isLoggedIn) {
-            navigate('/login');
-      } else {
-            navigate('/');
-      }
+    if (!isLoggedIn) {
+      navigate('/login');
+    } else {
+      navigate('/');
+    }
 
   }
 
@@ -26,9 +26,9 @@ export const BookDetailContent = ({ book, category }: BookDetailContentProps) =>
 
 
   const reviews = [
-  { id: 1, user: 'Aura', rating: 5, text: 'Excelente libro, muy recomendado.' },
-  { id: 2, user: 'Erika', rating: 4, text: 'Pudo haber tenido mejores secciones.' },
-  { id: 3, user: 'Carolina', rating: 4, text: 'Impresionante, no puedo parar de leer.' }
+    { id: 1, user: 'Aura', rating: 5, text: 'Excelente libro, muy recomendado.' },
+    { id: 2, user: 'Erika', rating: 4, text: 'Pudo haber tenido mejores secciones.' },
+    { id: 3, user: 'Carolina', rating: 4, text: 'Impresionante, no puedo parar de leer.' }
   ];
 
 
@@ -39,7 +39,7 @@ export const BookDetailContent = ({ book, category }: BookDetailContentProps) =>
     <main className="flex-1 overflow-y-auto bg-slate-50 w-full mx-auto h-screen">
       <div className="max-w-full p-8">
         {/* Volver a la pagina de dashboard */}
-        <button 
+        <button
           onClick={returnToDashboard}
           className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 mb-8 font-semibold transition"
         >
@@ -49,12 +49,12 @@ export const BookDetailContent = ({ book, category }: BookDetailContentProps) =>
 
         {/* Contenido principal */}
         <div className="flex flex-col md:flex-row justify-center items-start gap-12 px-8 py-16">
-          
+
           {/* Portada */}
           <div className="w-full md:w-2/5 flex flex-col items-center self-start">
             <div className="flex overflow-hidden sticky w-full items-center justify-center">
-              <img 
-                src={book.coverUrl} 
+              <img
+                src={book.coverUrl}
                 alt={book.title}
                 className="w-2/5 h-2/5 object-cover object-center"
               />
@@ -63,24 +63,24 @@ export const BookDetailContent = ({ book, category }: BookDetailContentProps) =>
             {/* Reseñas */}
             <div className="mt-8 w-4/6">
               <h3 className="text-xl font-bold text-gray-800 mb-4">Reseñas</h3>
-                <div className="space-y-3">
-                  {reviews.map((review) => (
-                    <div key={review.id} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                      <div className="flex items-center justify-between mb-2">
-                        <p className="font-semibold text-gray-800">{review.user}</p>
-                        <span className="text-yellow-500">{'★'.repeat(review.rating)}</span>
-                      </div>
-                      <p className="text-sm text-gray-600">{review.text}</p>
+              <div className="space-y-3">
+                {reviews.map((review) => (
+                  <div key={review.id} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                    <div className="flex items-center justify-between mb-2">
+                      <p className="font-semibold text-gray-800">{review.user}</p>
+                      <span className="text-yellow-500">{'★'.repeat(review.rating)}</span>
                     </div>
-                  ))}
-                </div>
+                    <p className="text-sm text-gray-600">{review.text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Información */}
           <div className="w-full md:w-2/3 flex justify-center pt-0">
             <div className="bg-white rounded-xl shadow-md p-8 w-4/7">
-              
+
               {/* Título y autor */}
               <h1 className="text-4xl font-bold text-gray-800 mb-3">
                 {book.title}
@@ -162,7 +162,7 @@ export const BookDetailContent = ({ book, category }: BookDetailContentProps) =>
               {/* Sección de compra */}
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-gray-800">Obtener este libro</h3>
-                
+
                 {!isDigital && (
                   <div className="flex items-center gap-4">
                     <label className="text-gray-700 font-semibold">Cantidad:</label>
@@ -196,9 +196,9 @@ export const BookDetailContent = ({ book, category }: BookDetailContentProps) =>
                 </button>
 
                 <p className="text-sm text-gray-600 text-center">
-                  {isDigital 
+                  {isDigital
                     ? "Recibirás acceso inmediato después de la compra"
-                    : book.stock && book.stock > 0 
+                    : book.stock && book.stock > 0
                       ? "Envío disponible"
                       : "No disponible en este momento"
                   }
