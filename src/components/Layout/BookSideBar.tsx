@@ -1,4 +1,3 @@
-import { BookCard } from '../BookInformation/BookCard';
 import type { Book } from '../../types';
 import { BookText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';

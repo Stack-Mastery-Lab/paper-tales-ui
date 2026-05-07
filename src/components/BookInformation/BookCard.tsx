@@ -16,7 +16,7 @@ const formatIcons: Record<string, JSX.Element> = {
     DIGITAL: <Monitor className="w-4 h-4" />,
 };
 
-export const BookCard: React.FC<BookCardProps> = ({ book, onAddToCart }) => {
+export const BookCard: React.FC<BookCardProps> = ({ book }) => {
 
     const { isLoggedIn } = useAuth();
     const navigate = useNavigate();

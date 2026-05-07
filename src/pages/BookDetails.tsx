@@ -1,13 +1,13 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { BookSideBar } from '../components/Layout/BookSideBar';
 import { useMemo } from 'react';
-import type { Book } from '../types'; 
+import type { Book } from '../types';
 import data from "../data/books.json";
 import type { LibraryData } from "../types";
 import { BookDetailContent } from '../components/BookInformation/BookInformation';
 
 const getRandomBooksFromCategory = (
-    books: Book[],
+  books: Book[],
   categoryId: string,
   excludeBookId: number,
   count: number = 2
@@ -25,30 +25,35 @@ const getRandomBooksFromCategory = (
 
 const BookDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const typedData = data as LibraryData;
   const book = typedData.books.find(b => b.id === Number(id));
-  const category = typedData.categories.find(c => c.id === book.categoryId)?.name || "N/A";
+  const category = typedData.categories.find(c => c.id === book?.categoryId)?.name || "N/A";
   /* Obtener dos libros relacionados para colocar en el sidebar */
   const relatedBooks = useMemo(() => {
-  if (!book) return [];
-  return getRandomBooksFromCategory(typedData.books, book.categoryId, book.id, 2);
-}, [book, typedData.books]);
+    if (!book) return [];
+    return getRandomBooksFromCategory(typedData.books, book.categoryId, book.id, 2);
+  }, [book, typedData.books]);
 
+  if (!book) {
+    return <p>Cargando libro o no encontrado...</p>;
+  }
 
+  if (!relatedBooks || relatedBooks.length === 0) {
+    return <p>Cargando libro o no encontrado...</p>;
+  }
 
-    return (
-      <div className="flex h-screen bg-white w-full">
-        <BookSideBar books={relatedBooks} />
-        <div className="flex-1">
-          <BookDetailContent book={book} category={category} />
-        </div>
+  return (
+    <div className="flex h-screen bg-white w-full">
+      <BookSideBar books={relatedBooks} />
+      <div className="flex-1">
+        <BookDetailContent book={book} category={category} />
       </div>
+    </div>
 
 
 
 
-      );
+  );
 
 };
 
