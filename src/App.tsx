@@ -7,6 +7,7 @@ import { useAuth } from './context/AuthContext';
 import Dashboard from "./pages/Dashboard";
 import { Books } from "./pages/Books";
 import Profile from "./pages/Profile";
+import Checkout from "./pages/Checkout";
 
 function App() {
   console.log("🔄 [App] render");
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<AuthLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="checkout" element={<Checkout />} />
         </Route>
       ) : (
         <Route path="/" element={<Layout />}>

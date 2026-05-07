@@ -59,6 +59,8 @@ export default function AuthLayout() {
         );
     };
 
+    const clearCart = () => setCartBooks([]);
+
     const location = useLocation();
     const showSidebar = location.pathname !== '/profile';
 
@@ -79,7 +81,9 @@ export default function AuthLayout() {
                 )}
                 <Outlet context={{ selectedFormat: formatFilter,
                      selectedCategories,
-                     onAddToCart: handleAddToCart
+                     onAddToCart: handleAddToCart,
+                     cartBooks,
+                     clearCart,
                      }} />
             </main>
 
