@@ -1,4 +1,5 @@
 import { ArrowLeft, ShoppingCart, Book as BooksIcon, Monitor, Calendar, DollarSign } from 'lucide-react';
+import { useOutletContext } from 'react-router-dom';
 import type { Book } from '../../types';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -20,6 +21,8 @@ export const BookDetailContent = ({ book, category }: BookDetailContentProps) =>
       }
 
   }
+
+  const { onAddToCart } = useOutletContext<{ onAddToCart: (book: Book) => void }>();
 
 
   const reviews = [
@@ -183,7 +186,8 @@ export const BookDetailContent = ({ book, category }: BookDetailContentProps) =>
                   </div>
                 )}
 
-                <button 
+                <button
+                  onClick={() => onAddToCart(book)}
                   disabled={!isDigital && (book.stock ?? 0) === 0}
                   className="w-full bg-indigo-600 text-white py-4 rounded-lg font-bold text-lg flex items-center justify-center gap-3 hover:bg-indigo-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
