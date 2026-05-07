@@ -1,9 +1,9 @@
 import React, { type JSX } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import type { Book } from '../types';
-import { useAuth } from '../context/AuthContext';
-import { Monitor, ShoppingCart, Book as BooksLuci, CheckCircle } from 'lucide-react';
+import type { Book } from '../../types';
+import { useAuth } from '../../context/AuthContext';
+import { Monitor, BookText, Book as BooksLuci, CheckCircle } from 'lucide-react';
 
 
 interface BookCardProps {
@@ -22,12 +22,12 @@ export const BookCard: React.FC<BookCardProps> = ({ book, onAddToCart }) => {
     const navigate = useNavigate();
     const isDigital = book.format.toUpperCase() === 'DIGITAL';
 
-    const handleAddToCart = () => {
+    const showBookDetails = () => {
         if (!isLoggedIn) {
             navigate('/login');
         } else {
             console.log(`Libro ${book.title} añadido al carrito`);
-            onAddToCart?.(book);
+            navigate(`/bookdetail/${book.id}`);
         }
     };
 
@@ -62,12 +62,12 @@ export const BookCard: React.FC<BookCardProps> = ({ book, onAddToCart }) => {
 
             <div className="p-5 pt-0">
                 <button
-                    onClick={handleAddToCart}
+                    onClick={showBookDetails}
                     disabled={!isDigital && (book.stock ?? 0) === 0}
-                    className="w-full flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition font-semibold"
+                    className="w-full flex items-center justify-center gap-2 bg-green-600 text-white py-2 rounded-lg hover:hover:bg-green-700 transition font-semibold"
                 >
-                    <ShoppingCart size={20} />
-                    <span>Añadir al carrito</span>
+                    <BookText size={20} />
+                    <span>Ver Libro</span>
                 </button>
 
             </div>

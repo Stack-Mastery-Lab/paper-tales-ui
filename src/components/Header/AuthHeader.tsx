@@ -1,5 +1,5 @@
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { LogOut, Shield, ShoppingCart } from 'lucide-react';
 
 
@@ -19,22 +19,27 @@ export const AuthHeader = ({ onToggleMenu, cartCount = 0, onCartClick }: AuthHea
     navigate('/');
   };
 
+  const location = useLocation();
+  const showMenuButton = location.pathname !== '/profile';
+
   return (
     <nav className="flex justify-between items-center px-6 py-3 bg-white border-b border-gray-200 shadow-sm">
       <div className="flex items-center gap-3">
+        {showMenuButton && (
         <button
           onClick={onToggleMenu}
           className="text-2xl text-gray-800 hover:bg-gray-100 p-1 rounded-md transition-colors"
         >
           ☰
         </button>
+        )}
         <span className="hidden sm:inline-block sm:text-xl font-bold text-gray-800 tracking-tight">
           Relatos de Papel
         </span>
       </div>
       <div className="flex items-center gap-6">
         {user && (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3" onClick={() => navigate('/profile')}>
             <img
               src={user.photo}
               alt={user.name}
