@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import { useAuth } from './context/AuthContext';
 import Dashboard from "./pages/Dashboard";
 import { Books } from "./pages/Books";
+import BookDetail from "./pages/BookDetails";
 import Profile from "./pages/Profile";
 import Checkout from "./pages/Checkout";
 
@@ -20,6 +21,7 @@ function App() {
       {isLoggedIn ? (
         <Route path="/" element={<AuthLayout />}>
           <Route index element={<Dashboard />} />
+          <Route path="bookdetail/:id" element={<BookDetail />} />
           <Route path="profile" element={<Profile />} />
           <Route path="checkout" element={<Checkout />} />
         </Route>
