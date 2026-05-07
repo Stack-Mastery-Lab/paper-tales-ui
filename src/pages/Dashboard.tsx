@@ -1,5 +1,5 @@
 import data from "../data/books.json";
-import { BookCard } from '../components/BookCard';
+import { BookCard } from '../components/BookInformation/BookCard';
 import { Loading } from "../components/Loading";
 import { useEffect, useState } from "react";
 import type { Book, LibraryData } from "../types";

@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { AuthHeader } from "../Header/AuthHeader";
 import { FilterSidebar } from "./FilterSidebar";
 import { useState } from "react";
@@ -7,6 +7,8 @@ import { CartDrawer } from "../CartDrawer";
 
 export default function AuthLayout() {
     console.log("🔐 [AuthLayout] render");
+    const location = useLocation();
+    const isBookDetail = location.pathname.includes("/bookdetail/");
     const [formatFilter, setFormatFilter] = useState("TODOS");
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -66,12 +68,13 @@ export default function AuthLayout() {
                 onCartClick={() => setIsCartOpen(true)}
             />
             <main className="flex flex-1">
+                {!isBookDetail && 
                 <FilterSidebar
                     selectedFormat={formatFilter}
                     setSelectedFormat={setFormatFilter}
                     isOpen={isSidebarOpen}
                     onToggleCategory={handleToggleCategory}
-                />
+                />}
                 <Outlet context={{ selectedFormat: formatFilter,
                      selectedCategories,
                      onAddToCart: handleAddToCart

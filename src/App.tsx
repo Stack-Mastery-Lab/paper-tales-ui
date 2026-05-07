@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import { useAuth } from './context/AuthContext';
 import Dashboard from "./pages/Dashboard";
 import { Books } from "./pages/Books";
+import BookDetail from "./pages/BookDetails";
 
 function App() {
   console.log("🔄 [App] render");
@@ -18,6 +19,7 @@ function App() {
       {isLoggedIn ? (
         <Route path="/" element={<AuthLayout />}>
           <Route index element={<Dashboard />} />
+          <Route path="bookdetail/:id" element={<BookDetail />} />
         </Route>
       ) : (
         <Route path="/" element={<Layout />}>

@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { BookCard } from '../components/BookCard';
+import { BookCard } from '../components/BookInformation/BookCard';
 import { useEffect, useState } from 'react';
 import data from "../data/books.json";
 import type { LibraryData } from '../types';
