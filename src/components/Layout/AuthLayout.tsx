@@ -61,6 +61,11 @@ export default function AuthLayout() {
         );
     };
 
+    const clearCart = () => setCartBooks([]);
+
+    const location = useLocation();
+    const showSidebar = location.pathname !== '/profile';
+
     return (
         <div className="flex flex-col min-h-screen bg-papel">
             <AuthHeader onToggleMenu={toggleSidebar}
@@ -69,15 +74,20 @@ export default function AuthLayout() {
             />
             <main className="flex flex-1">
                 {!isBookDetail && 
+                {showSidebar && (
                 <FilterSidebar
                     selectedFormat={formatFilter}
                     setSelectedFormat={setFormatFilter}
                     isOpen={isSidebarOpen}
                     onToggleCategory={handleToggleCategory}
                 />}
+                />
+                )}
                 <Outlet context={{ selectedFormat: formatFilter,
                      selectedCategories,
-                     onAddToCart: handleAddToCart
+                     onAddToCart: handleAddToCart,
+                     cartBooks,
+                     clearCart,
                      }} />
             </main>
 

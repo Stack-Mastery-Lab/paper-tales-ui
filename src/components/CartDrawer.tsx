@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { X, Trash2, Plus, Minus, ShoppingBag, Monitor, Book as BookIcon, ArrowRight } from 'lucide-react';
 import type { Book } from '../types';
-import { CheckoutModal } from './CheckoutModal';
+import { useNavigate } from 'react-router-dom';
 
 interface CartDrawerProps {
     isOpen: boolean;
@@ -19,54 +19,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     onUpdateQuantity
 }) => {
 
-    const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-    const [paymentMethod, setPaymentMethod] = useState<'tarjeta' | 'paypal'>('tarjeta');
-    const [coupon, setCoupon] = useState('');
-    const [discount, setDiscount] = useState(0);
-    const [couponMessage, setCouponMessage] = useState<string | null>(null);
-
-    const handleCloseCheckout = () => {
-        setIsCheckoutOpen(false);
-        setCoupon('');
-        setDiscount(0);
-        setCouponMessage(null);
-        setPaymentMethod('tarjeta');
-    };
-
-    const handleConfirmPayment = () => {
-        console.log('Procesando pago...', paymentMethod, coupon, total);
-        handleCloseCheckout();
-    };
-
+    const navigate = useNavigate();
     const subtotal = items.reduce((acc, item) => acc + item.price * (item.quantity ?? 1), 0);
-    const total = Math.max(0, subtotal - discount);
-
-    const applyCoupon = () => {
-        const code = coupon.trim().toUpperCase();
-        if (!code) {
-            setDiscount(0);
-            setCouponMessage('Ingresa un cupón válido');
-            return;
-        }
-
-        switch (code) {
-            case 'A':
-                setDiscount(subtotal * 0.1);
-                setCouponMessage('Descuento aplicado: 10%');
-                break;
-            case 'B':
-                setDiscount(subtotal * 0.2);
-                setCouponMessage('Descuento aplicado: 20%');
-                break;
-            case 'C':
-                setDiscount(5);
-                setCouponMessage('Descuento aplicado: $5');
-                break;
-            default:
-                setDiscount(0);
-                setCouponMessage('Cupón inválido');
-        }
-    };
 
     return (
         <>
@@ -204,26 +158,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 {/* Pie: Resumen y Checkout */}
                 {items.length > 0 && (
                     <div className="p-6 bg-gray-50 border-t space-y-4">
-                        <div className="space-y-2">
-                            <div className="flex justify-between text-gray-500 text-sm">
-                                <span>Subtotal</span>
-                                <span>${subtotal.toFixed(2)}</span>
-                            </div>
-                            {discount > 0 && (
-                                <div className="flex justify-between text-sm text-green-600">
-                                    <span>Descuento</span>
-                                    <span>-${discount.toFixed(2)}</span>
-                                </div>
-                            )}
-                            <div className="flex justify-between items-center text-gray-800">
-                                <span className="font-bold text-lg">Total</span>
-                                <span className="font-black text-2xl text-indigo-600">${total.toFixed(2)}</span>
-                            </div>
+                        <div className="flex justify-between items-center text-gray-800">
+                            <span className="font-bold text-lg">Total</span>
+                            <span className="font-black text-2xl text-indigo-600">${subtotal.toFixed(2)}</span>
                         </div>
 
                         <button
                             className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-indigo-200 flex items-center justify-center gap-2 group"
-                            onClick={() => setIsCheckoutOpen(true)}
+                            onClick={() => { onClose(); navigate('/checkout'); }}
                         >
                             Ir al Pago
                             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -235,20 +177,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     </div>
                 )}
             </aside>
-            <CheckoutModal
-                isOpen={isCheckoutOpen}
-                onClose={handleCloseCheckout}
-                paymentMethod={paymentMethod}
-                setPaymentMethod={setPaymentMethod}
-                coupon={coupon}
-                setCoupon={setCoupon}
-                discount={discount}
-                couponMessage={couponMessage}
-                subtotal={subtotal}
-                total={total}
-                applyCoupon={applyCoupon}
-                onConfirm={handleConfirmPayment}
-            />
         </>
     );
 };
