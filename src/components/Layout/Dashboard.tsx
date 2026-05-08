@@ -1,14 +1,16 @@
-import data from "../data/books.json";
-import { BookCard } from '../components/BookInformation/BookCard';
-import { Loading } from "../components/Loading";
+import data from "../../data/books.json";
+import { BookCard } from '../BookInformation/BookCard';
+import { Loading } from "../Loading";
 import { useEffect, useState } from "react";
-import type { Book, LibraryData } from "../types";
+import type { Book, LibraryData } from "../../types";
 import { useOutletContext } from "react-router-dom";
+import { BrushCleaning } from "lucide-react";
 
 
 interface FilterContext {
   selectedFormat: string;
   selectedCategories: string[];
+  setSelectedFormat: (format: string) => void;
   onAddToCart: (book: Book) => void;
 }
 
@@ -17,10 +19,10 @@ const Dashboard = () => {
   const { books } = typedData;
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  
+
   const { selectedFormat, selectedCategories, onAddToCart } = useOutletContext<FilterContext>();
 
-    useEffect(() => {
+  useEffect(() => {
     setIsLoading(true);
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -31,18 +33,18 @@ const Dashboard = () => {
 
   const filteredBooks = books.filter((book) => {
     // Filtro por formato
-    const matchesFormat = 
-      selectedFormat === "TODOS" || 
+    const matchesFormat =
+      selectedFormat === "TODOS" ||
       book.format.toUpperCase() === selectedFormat;
 
     // Filtro por categorías (múltiple)
-    const matchesCategory = 
-      selectedCategories.length === 0 || 
+    const matchesCategory =
+      selectedCategories.length === 0 ||
       selectedCategories.includes(book.categoryId);
 
     // Filtro por búsqueda
-    const matchesSearch = 
-      searchQuery === "" || 
+    const matchesSearch =
+      searchQuery === "" ||
       book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       book.author.toLowerCase().includes(searchQuery.toLowerCase());
 
@@ -52,18 +54,26 @@ const Dashboard = () => {
 
 
   useEffect(() => {
-          setIsLoading(true);
-  
-          const timer = setTimeout(() => {
-              setIsLoading(false);
-          }, 800);
-  
-          return () => clearTimeout(timer);
-      }, [selectedFormat, selectedCategories]);
+    setIsLoading(true);
+
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, [selectedFormat, selectedCategories]);
+
+
+  const handleClearFilters = () => {
+    setSearchQuery(""); 
+      
+  };
 
   if (isLoading) {
     return <Loading />;
   }
+
+
 
   return (
     <div className="p-5 h-screen w-screen">
@@ -78,10 +88,21 @@ const Dashboard = () => {
         <input
           type="text"
           placeholder="Buscar por título"
-           value={searchQuery}
-           onChange={(e) => setSearchQuery(e.target.value)}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           className="border w-full border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
+
+        {(searchQuery || selectedFormat !== "TODOS") && (
+          <button
+            onClick={handleClearFilters}
+            className="flex items-center border gap-2 rounded-md py-2 px-4 whitespace-nowrap text-sm text-red-600 hover:text-red-800 font-medium transition-colors"
+          >
+            <BrushCleaning  size={16} />
+            
+          </button>
+        )}
+
         <span className="text-sm text-gray-500">{filteredBooks.length} libros encontrados</span>
       </div>
 
