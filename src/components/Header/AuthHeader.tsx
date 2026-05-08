@@ -33,13 +33,13 @@ export const AuthHeader = ({ onToggleMenu, cartCount = 0, onCartClick }: AuthHea
           ☰
         </button>
         )}
-        <span className="hidden sm:inline-block sm:text-xl font-bold text-gray-800 tracking-tight">
+        <span className="hidden sm:inline-block sm:text-xl font-bold text-gray-800 tracking-tight cursor-pointer hover:text-indigo-600 transition-colors" onClick={() => navigate('/')}>
           Relatos de Papel
         </span>
       </div>
       <div className="flex items-center gap-6">
         {user && (
-          <div className="flex items-center gap-3" onClick={() => navigate('/profile')}>
+          <div className="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded-lg transition-colors" onClick={() => navigate('/profile')}>
             <img
               src={user.photo}
               alt={user.name}
