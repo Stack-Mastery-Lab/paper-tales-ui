@@ -4,7 +4,7 @@ import AuthLayout from "./components/Layout/AuthLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { useAuth } from './context/AuthContext';
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./components/Layout/Dashboard";
 import { Books } from "./pages/Books";
 import BookDetail from "./pages/BookDetails";
 import Profile from "./pages/Profile";
