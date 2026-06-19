@@ -27,3 +27,17 @@ export interface LibraryData {
   categories: CategoryBook[];
   books: Book[];
 }
+
+export interface ApiBook {
+  id: number;
+  title: string;
+  author: string;
+  isbn: string;
+  publication_date: string;
+  category: string;
+  rating: number;
+  visible: boolean;
+  price: number;
+  book_type: 'PHYSICAL' | 'DIGITAL';
+  stock: number;
+}

@@ -1,8 +1,10 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import data from "../data/books.json";
-import CategoryCard from "../components/CategoryCard";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     console.log("🏠 [Home] render");
   }, []);
@@ -14,7 +16,7 @@ const Home = () => {
   return (
     // Fondo general con el color papel
     <main className="bg-papel min-h-screen text-tinta flex flex-col items-center w-full">
-      
+
       {/* Hero Section: Impacto visual inicial */}
       <section className="py-20 px-4 text-center border-b border-tinta/10">
         <h1 className="text-5xl md:text-6xl font-bold mb-6">Relatos de Papel</h1>
@@ -28,30 +30,27 @@ const Home = () => {
 
       {/* Container principal */}
       <div className="max-w-7xl mx-auto px-4 py-12">
-        
+
         {/* Sección Acerca de */}
         <section className="mb-16 text-center">
           <h2 className="text-3xl font-bold mb-6">¿Qué es Relatos de Papel?</h2>
           <div className="max-w-3xl mx-auto space-y-4 text-lg">
             <p className="text-tinta/80">
-              Somos una plataforma donde los amantes de la literatura pueden descubrir 
-              nuevas narrativas. Ya seas un escritor buscando feedback o un lector ávido, 
+              Somos una plataforma donde los amantes de la literatura pueden descubrir
+              nuevas narrativas. Ya seas un escritor buscando feedback o un lector ávido,
               aquí encontrarás tu lugar.
             </p>
           </div>
         </section>
 
         {/* Sección Categorías */}
-        <section>
+        <section className="justify-center mb-16 text-center">
           <h2 className="text-3xl font-bold mb-8 text-center">Categorías Destacadas</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data.categories.map((category) => (
-              <CategoryCard
-                key={category.id}
-                category={category}
-              />
-            ))}
-          </div>
+          <button className="mb-8 bg-acento text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+          onClick={() => navigate('/books')}
+          >
+            Ver Todas las Categorías
+          </button>
         </section>
       </div>
     </main>
