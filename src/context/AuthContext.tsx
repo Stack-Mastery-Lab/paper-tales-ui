@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import type { User } from '../types/user';
+import { clearAuthToken, isTokenExpired } from '../utils/auth';
 
 interface AuthContextType {
   isLoggedIn: boolean;
@@ -18,8 +19,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   });
 
   useEffect(() => {
-    const logged = localStorage.getItem('isLoggedIn') === 'true';
-    setIsLoggedIn(logged);
+    const hasLoginFlag = localStorage.getItem('isLoggedIn') === 'true';
+    if (!hasLoginFlag || isTokenExpired()) {
+      clearAuthToken();
+      setIsLoggedIn(false);
+      return;
+    }
+
+    setIsLoggedIn(true);
   }, []);
 
   const login = (user: User) => {
@@ -33,6 +40,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('currentUser');
+    clearAuthToken();
     setIsLoggedIn(false);
   };
 

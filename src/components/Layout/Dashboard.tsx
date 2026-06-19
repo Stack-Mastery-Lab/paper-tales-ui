@@ -2,9 +2,10 @@ import data from "../../data/books.json";
 import { BookCard } from '../BookInformation/BookCard';
 import { Loading } from "../Loading";
 import { useEffect, useState } from "react";
-import type { Book, LibraryData } from "../../types";
+import type { Book, LibraryData, ApiBook } from "../../types";
 import { useOutletContext } from "react-router-dom";
 import { BrushCleaning } from "lucide-react";
+import { fetchBooks } from '../../utils/api';
 
 
 interface FilterContext {
@@ -16,19 +17,46 @@ interface FilterContext {
 
 const Dashboard = () => {
   const typedData = data as LibraryData;
-  const { books } = typedData;
+  const { categories } = typedData;
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [books, setBooks] = useState<Book[]>([]);
 
   const { selectedFormat, selectedCategories, onAddToCart } = useOutletContext<FilterContext>();
 
   useEffect(() => {
     setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [selectedFormat, selectedCategories]);
+
+    fetchBooks()
+      .then((apiBooks: ApiBook[]) => {
+        const mapped = apiBooks.map((api) => {
+          const matchedCategory = categories.find(
+            (category) => category.name.toLowerCase() === api.category.toLowerCase()
+          );
+
+          const b: Book = {
+            id: api.id,
+            title: api.title,
+            author: api.author,
+            categoryId: matchedCategory?.id ?? api.category.toLowerCase().replace(/\s+/g, '-'),
+            year: new Date(api.publication_date).getFullYear(),
+            price: api.price,
+            format: api.book_type === 'DIGITAL' ? 'digital' : 'fisico',
+            summary: `ISBN ${api.isbn} · Categoría: ${api.category}`,
+            coverUrl: `https://picsum.photos/seed/book-${api.id}/400/600`,
+            stock: api.stock,
+          };
+
+          return b;
+        });
+
+        setBooks(mapped);
+      })
+      .catch(() => {
+        setBooks([]);
+      })
+      .finally(() => setIsLoading(false));
+  }, [categories, selectedFormat, selectedCategories]);
 
 
   const filteredBooks = books.filter((book) => {
@@ -53,15 +81,7 @@ const Dashboard = () => {
 
 
 
-  useEffect(() => {
-    setIsLoading(true);
-
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
-
-    return () => clearTimeout(timer);
-  }, [selectedFormat, selectedCategories]);
+  // (fetch handled above) no-op
 
 
   const handleClearFilters = () => {

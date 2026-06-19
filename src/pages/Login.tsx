@@ -1,18 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogIn, Mail, Lock } from 'lucide-react';
-import data from "../data/user.json";
 import { useState } from 'react';
 import type { User } from '../types/user';
 import { Loading } from '../components/Loading';
-import  { type FormEvent } from 'react';
+import { type FormEvent } from 'react';
+import { API_BASE } from '../utils/config';
+import { saveAuthToken } from '../utils/auth';
 
 
 
 const Login = () => {
-
-
-  const users: User[] = data as User[];
   const navigate = useNavigate();
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
@@ -26,19 +24,51 @@ const Login = () => {
     e.preventDefault();
 
     setIsLoading(true);
+    try {
+      const payload = {
+        targetMethod: 'POST',
+        body: { email: username, password },
+      };
 
-    const userFound: User | undefined = users.find(
-      (u) => u.username === username && u.password === password
-    );
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+      const res = await fetch(
+        `${API_BASE}/users-service/api/v1/auth/token`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        }
+      );
 
-    if (userFound) {
-      login(userFound);
+      if (!res.ok) {
+        setError('Error al autenticar. Intenta de nuevo.');
+        return;
+      }
+
+      const data = await res.json();
+      const token = data?.token;
+
+      if (!token) {
+        setError('Respuesta inválida del servidor');
+        return;
+      }
+
+      saveAuthToken(token);
+
+      const remoteUser: User = {
+        id: 0,
+        username: username,
+        name: username,
+        role: 'user',
+        photo: '',
+      };
+
+      login(remoteUser);
       navigate('/');
-    } else {
-      setError('Usuario o contraseña incorrectos');
+    } catch (err) {
+      setError('No se pudo conectar con el servidor');
+    } finally {
+      setIsLoading(false);
     }
-     setIsLoading(false);
   };
 
 
